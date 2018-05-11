@@ -16,7 +16,7 @@ class CreateConstructorasTable extends Migration
         Schema::create('constructoras', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',32);
-            $table->integer('documento');
+            $table->bigInteger('documento');
             $table->string('telefono',11);
             $table->unsignedInteger('idLocalidad')->index();
             $table->string('email',32);

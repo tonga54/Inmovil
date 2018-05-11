@@ -14,13 +14,13 @@
 
 @section('breadcrumbs')
         <li class="active">
-          <a href="{{url('sistema/interesados')}}" class="disabled">
-            <i class="fa fa-dashboard"></i> Interesados
+          <a href="{{url('sistema/constructoras')}}" class="disabled">
+            <i class="fa fa-dashboard"></i> Constructoras
           </a>
         </li>
 
         <li class="active">
-            <i class="fa fa-dashboard"></i> Editar
+            <i class="fa fa-dashboard"></i> Crear
         </li>
 @endsection
 
@@ -36,40 +36,35 @@
 		<div class='col-md-8 col-md-offset-2'>
 			<div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Editar interesado</h3>
+              <h3 class="box-title">Crear constructora</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              {!! Form::open(['route' => ['interesados.update', $interesado], 'method' => 'PUT']) !!}
+              {!! Form::open(['route' => 'constructoras.store', 'method' => 'POST']) !!}
                 <!-- text input -->
                 <div class="form-group">
-                  {!! Form::label('txtNombre','Nombre') !!}
-                  {!! Form::text('nombre',$interesado->nombre,['class' => 'form-control', 'placeholder' => 'Nombre..','required']) !!}
+                  {!! Form::label('nombre','Nombre empresa') !!}
+                  {!! Form::text('nombre',null,['class' => 'form-control', 'placeholder' => 'Nombre..','required']) !!}
                 </div>
 
                 <div class="form-group">
-                  {!! Form::label('txtApellido','Apellido') !!}
-                  {!! Form::text('apellido',$interesado->apellido,['class' => 'form-control', 'placeholder' => 'Apellido..','required']) !!}
+                  {!! Form::label('telefono','Telefono') !!}
+                  {!! Form::tel('telefono',null,['class' => 'form-control', 'placeholder' => 'Telefono..','required']) !!}
                 </div>
 
                 <div class="form-group">
-                  {!! Form::label('txtTelefono','Telefono') !!}
-                  {!! Form::tel('telefono',$interesado->telefono,['class' => 'form-control', 'placeholder' => 'Telefono..','required']) !!}
+                  {!! Form::label('documento','Documento (Ci,Rut,etc)') !!}
+                  {!! Form::tel('documento',null,['class' => 'form-control', 'placeholder' => 'Telefono..','required']) !!}
                 </div>
 
                 <div class="form-group">
-                  {!! Form::label('txtEmail','Email') !!}
-                  {!! Form::email('email',$interesado->email,['class' => 'form-control', 'placeholder' => 'Email..','required']) !!}
+                  {!! Form::label('email','Email') !!}
+                  {!! Form::email('email',null,['class' => 'form-control', 'placeholder' => 'Email..','required']) !!}
                 </div>
 
                 <div class="form-group">
                   {!! Form::label('slcLocalidad','Localidades') !!}
                   {!! Form::select('slcLocalidad',['' =>'Seleccione una localidad', '1' => 'Montevideo'], null,['class' => 'form-control']) !!}
-                </div>
-
-				        <div class="form-group">
-                  {!! Form::label('slcBarrios','Barrios') !!}
-                  {!! Form::select('slcBarrios',['' =>'Seleccione un barrio', '1' => 'Union'], null,['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group col-md-3 col-md-offset-9 top-buffer">

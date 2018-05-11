@@ -1,4 +1,4 @@
-@extends('general.main')
+@extends('Template.main')
 
 @section('titulo')
 	Buscar
@@ -25,8 +25,15 @@
 @endsection
 
 @section('breadcrumbs')
-		<li><a href="#"><i class="fa fa-dashboard"></i> Inmuebles</a></li>
-        <li class="active">Buscar</li>
+        <li class="active">
+          <a href="{{url('sistema/interesados')}}" class="disabled">
+            <i class="fa fa-dashboard"></i> Interesados
+          </a>
+        </li>
+
+        <li class="active">
+            <i class="fa fa-dashboard"></i> Ver
+        </li>
 @endsection
 
 @section('contenido')

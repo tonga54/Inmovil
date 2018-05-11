@@ -14,8 +14,8 @@
 
 @section('breadcrumbs')
         <li class="active">
-          <a href="{{url('sistema/interesados')}}" class="disabled">
-            <i class="fa fa-dashboard"></i> Interesados
+          <a href="{{url('sistema/constructoras')}}" class="disabled">
+            <i class="fa fa-dashboard"></i> Constructoras
           </a>
         </li>
 
@@ -31,7 +31,6 @@
 			margin-top: 40px;
 		}
 	</style>
-  
 	<div class='row'>
 		<div class='col-md-8 col-md-offset-2'>
 			<div class="box box-warning">

@@ -1,11 +1,11 @@
-@extends('Template.main')
+@extends('general.main')
 
 @section('titulo')
-	Crear interesado
+	Crear cliente
 @endsection
 
 @section('tituloPagina')
-	Crear interesado
+	Crear cliente
 @endsection
 
 @section('descripcionPagina')
@@ -13,15 +13,7 @@
 @endsection
 
 @section('breadcrumbs')
-        <li class="active">
-          <a href="{{url('sistema/interesados')}}" class="disabled">
-            <i class="fa fa-dashboard"></i> Interesados
-          </a>
-        </li>
-
-        <li class="active">
-            <i class="fa fa-dashboard"></i> Editar
-        </li>
+    <li class="active">Inicio</li>
 @endsection
 
 @section('contenido')
@@ -31,35 +23,34 @@
 			margin-top: 40px;
 		}
 	</style>
-  
 	<div class='row'>
 		<div class='col-md-8 col-md-offset-2'>
 			<div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Editar interesado</h3>
+              <h3 class="box-title">Crear cliente</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              {!! Form::open(['route' => ['interesados.update', $interesado], 'method' => 'PUT']) !!}
+              {!! Form::open(['route' => 'interesados.store', 'method' => 'POST']) !!}
                 <!-- text input -->
                 <div class="form-group">
                   {!! Form::label('txtNombre','Nombre') !!}
-                  {!! Form::text('nombre',$interesado->nombre,['class' => 'form-control', 'placeholder' => 'Nombre..','required']) !!}
+                  {!! Form::text('nombre',null,['class' => 'form-control', 'placeholder' => 'Nombre..','required']) !!}
                 </div>
 
                 <div class="form-group">
                   {!! Form::label('txtApellido','Apellido') !!}
-                  {!! Form::text('apellido',$interesado->apellido,['class' => 'form-control', 'placeholder' => 'Apellido..','required']) !!}
+                  {!! Form::text('apellido',null,['class' => 'form-control', 'placeholder' => 'Apellido..','required']) !!}
                 </div>
 
                 <div class="form-group">
                   {!! Form::label('txtTelefono','Telefono') !!}
-                  {!! Form::tel('telefono',$interesado->telefono,['class' => 'form-control', 'placeholder' => 'Telefono..','required']) !!}
+                  {!! Form::tel('telefono',null,['class' => 'form-control', 'placeholder' => 'Telefono..','required']) !!}
                 </div>
 
                 <div class="form-group">
                   {!! Form::label('txtEmail','Email') !!}
-                  {!! Form::email('email',$interesado->email,['class' => 'form-control', 'placeholder' => 'Email..','required']) !!}
+                  {!! Form::email('email',null,['class' => 'form-control', 'placeholder' => 'Email..','required']) !!}
                 </div>
 
                 <div class="form-group">

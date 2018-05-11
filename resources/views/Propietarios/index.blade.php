@@ -21,13 +21,13 @@
 @endsection
 
 @section('descripcionPagina')
-	Aqui podras gestionar tus interesados
+	Aqui podras gestionar tus propietarios
 @endsection
 
 @section('breadcrumbs')
-        <li class="active">
-          <i class="fa fa-dashboard"></i> Interesados
-        </li>
+    <li class="active">
+      <i class="fa fa-dashboard"></i> Propietarios
+    </li>
 @endsection
 
 @section('contenido')
@@ -45,20 +45,23 @@
                 <th>Nombre</th>
                 <th>Telefono</th>
                 <th>Email</th>
+                <th>Documento</th>
                 <th>Localidad</th>
                 <th>Barrio</th>
+                <th>Direccion</th>
               </tr>
               </thead>
               <tbody>
-                @foreach ($interesados as $int)
+                @foreach ($propietarios as $prop)
                   <tr>
-                    <td>{{$int->nombre}} {{$int->apellido}}</td>
-                    <td>{{$int->telefono}}</td>
-                    <td>{{$int->email}}</td>
-                    <td>{{$int->localidad->nombre}}</td>
-                    <td>{{$int->barrio->nombre}}</td>
-                    <td><a href="{{ route('interesados.edit', $int->id) }}" class="btn btn-primary btn-xs">Editar</a><td>
-                    <td><a href="{{ route('interesados.destroy', $int->id) }}" onclick="return confirm('Seguro que deseas borrar el interesado?')" class="btn btn-primary btn-xs">Eliminar</a><td>
+                    <td>{{$prop->nombre}} {{$prop->apellido}}</td>
+                    <td>{{$prop->telefono}}</td>
+                    <td>{{$prop->email}}</td>
+                    <td>{{$prop->documento}}</td>
+                    <td>{{$prop->localidad->nombre}}</td>
+                    <td>{{$prop->barrio->nombre}}</td>
+                    <td><a href="{{ route('propietarios.edit', $prop->id) }}" class="btn btn-primary btn-xs">Editar</a><td>
+                    <td><a href="{{ route('propietarios.destroy', $prop->id) }}" onclick="return confirm('Seguro que deseas borrar el interesado?')" class="btn btn-primary btn-xs">Eliminar</a><td>
                   </tr>
                 @endforeach
               </tbody>
@@ -72,8 +75,9 @@
               </tr>
               </tfoot>
             </table>
-            
-            {{ $interesados->links() }}
+
+            {{ $propietarios->links() }}
+
           </div>
           <!-- /.box-body -->
         </div>

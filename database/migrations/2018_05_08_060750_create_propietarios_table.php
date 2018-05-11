@@ -17,7 +17,7 @@ class CreatePropietariosTable extends Migration
             $table->increments('id');
             $table->string('nombre',32);
             $table->string('apellido',32);
-            $table->integer('documento');
+            $table->bigInteger('documento');
             $table->string('telefono',11);
             $table->unsignedInteger('idLocalidad')->index();
             $table->unsignedInteger('idBarrio')->index();

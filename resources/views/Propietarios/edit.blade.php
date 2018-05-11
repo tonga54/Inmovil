@@ -14,8 +14,8 @@
 
 @section('breadcrumbs')
         <li class="active">
-          <a href="{{url('sistema/interesados')}}" class="disabled">
-            <i class="fa fa-dashboard"></i> Interesados
+          <a href="{{url('sistema/propietarios')}}" class="disabled">
+            <i class="fa fa-dashboard"></i> Propietarios
           </a>
         </li>
 
@@ -25,7 +25,7 @@
 @endsection
 
 @section('contenido')
-
+	
 	<style type="text/css">
 		.top-buffer{
 			margin-top: 40px;

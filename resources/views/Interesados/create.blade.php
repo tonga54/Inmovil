@@ -1,4 +1,4 @@
-@extends('general.main')
+@extends('Template.main')
 
 @section('titulo')
 	Crear interesado
@@ -13,27 +13,25 @@
 @endsection
 
 @section('breadcrumbs')
-		<li><a href="#"><i class="fa fa-dashboard"></i> Inmuebles</a></li>
-        <li class="active">Buscar</li>
+        <li class="active">
+          <a href="{{url('sistema/interesados')}}" class="disabled">
+            <i class="fa fa-dashboard"></i> Interesados
+          </a>
+        </li>
+
+        <li class="active">
+            <i class="fa fa-dashboard"></i> Crear
+        </li>
 @endsection
 
 @section('contenido')
-	
-  @if(count($errors) > 0)
-      <div class="alert alert-danger" role="alert">
-        <ul>
-          @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-          @endforeach
-        </ul>
-      </div>
-  @endif
 
 	<style type="text/css">
 		.top-buffer{
 			margin-top: 40px;
 		}
 	</style>
+  
 	<div class='row'>
 		<div class='col-md-8 col-md-offset-2'>
 			<div class="box box-warning">

@@ -13,12 +13,12 @@ class Propietario extends Model
 
     public function localidad()
     {
-        return $this->belongsTo('App\Localidad');
+        return $this->belongsTo('App\Localidad','idLocalidad');
     }
 
     public function barrio()
     {
-        return $this->belongsTo('App\Barrio');
+        return $this->belongsTo('App\Barrio','idBarrio');
     }
 
     public function imueble()

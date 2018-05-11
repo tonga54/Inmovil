@@ -55,5 +55,8 @@ Route::group(['prefix' => 'sistema'], function(){
 		//nombre a la ruta
 		'as'	=> 'interesados.destroy' 
 	]);
+	Route::resource('clientes','ClientesController');
+	Route::resource('propietarios','PropietariosController');
+	Route::resource('constructoras','ConstructorasController');
 	//Route::get('interesados/{id}/destroy','InteresadosController@destroy');
 });

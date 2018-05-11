@@ -294,8 +294,21 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('sistema/interesados/') }}">Inicio</a></li>
-            <li><a href="{{ url('sistema/interesados/create') }}">Cargar</a></li>
+            <li><a href="{{ url('sistema/propietarios/') }}">Inicio</a></li>
+            <li><a href="{{ url('sistema/propietarios/create') }}">Cargar</a></li>
+            <li><a href="#">Buscar</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Constructoras</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ url('sistema/constructoras/') }}">Inicio</a></li>
+            <li><a href="{{ url('sistema/constructoras/create') }}">Cargar</a></li>
             <li><a href="#">Buscar</a></li>
           </ul>
         </li>
@@ -328,6 +341,11 @@ desired effect
         <small>@yield('descripcionPagina')</small>
       </h1>
       <ol class="breadcrumb">
+        <li class="active">
+          <a href="{{url('sistema')}}">
+            <i class="fa fa-dashboard"></i>Sistema
+          </a>
+        </li>
         @yield('breadcrumbs')
       </ol>
     </section>
@@ -335,6 +353,7 @@ desired effect
     <!-- Main content -->
     <section class="content container-fluid">
       @include('flash::message')
+      @include('Template.Partials.errors')
       @yield('contenido')
 
       <!--------------------------

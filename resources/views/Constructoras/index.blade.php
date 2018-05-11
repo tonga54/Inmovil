@@ -17,16 +17,16 @@
 @endsection
 
 @section('tituloPagina')
-	Interesados
+	Constructoras
 @endsection
 
 @section('descripcionPagina')
-	Aqui podras gestionar tus interesados
+	Aqui podras gestionar las empresas constructoras
 @endsection
 
 @section('breadcrumbs')
         <li class="active">
-          <i class="fa fa-dashboard"></i> Interesados
+          <i class="fa fa-dashboard"></i> Constructoras
         </li>
 @endsection
 
@@ -44,21 +44,21 @@
               <tr>
                 <th>Nombre</th>
                 <th>Telefono</th>
+                <th>Documento</th>
                 <th>Email</th>
                 <th>Localidad</th>
-                <th>Barrio</th>
               </tr>
               </thead>
               <tbody>
-                @foreach ($interesados as $int)
+                @foreach ($constructoras as $const)
                   <tr>
-                    <td>{{$int->nombre}} {{$int->apellido}}</td>
-                    <td>{{$int->telefono}}</td>
-                    <td>{{$int->email}}</td>
-                    <td>{{$int->localidad->nombre}}</td>
-                    <td>{{$int->barrio->nombre}}</td>
-                    <td><a href="{{ route('interesados.edit', $int->id) }}" class="btn btn-primary btn-xs">Editar</a><td>
-                    <td><a href="{{ route('interesados.destroy', $int->id) }}" onclick="return confirm('Seguro que deseas borrar el interesado?')" class="btn btn-primary btn-xs">Eliminar</a><td>
+                    <td>{{$const->nombre}}</td>
+                    <td>{{$const->telefono}}</td>
+                    <td>{{$const->documento}}</td>
+                    <td>{{$const->email}}</td>
+                    <td>{{$const->localidad->nombre}}</td>
+                    <td><a href="{{ route('constructoras.edit', $const->id) }}" class="btn btn-primary btn-xs">Editar</a><td>
+                    <td><a href="{{ route('constructoras.destroy', $const->id) }}" onclick="return confirm('Seguro que deseas borrar el interesado?')" class="btn btn-primary btn-xs">Eliminar</a><td>
                   </tr>
                 @endforeach
               </tbody>
@@ -73,7 +73,8 @@
               </tfoot>
             </table>
             
-            {{ $interesados->links() }}
+            {{ $constructoras->links() }}
+
           </div>
           <!-- /.box-body -->
         </div>

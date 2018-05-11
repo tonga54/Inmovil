@@ -10,15 +10,22 @@ class InteresadosController extends Controller
 {
     public function index()
     {	
-        $interesados = Interesado::all();
+        /*$interesados = Interesado::all();
+        foreach ($interesados as $value) {
+            $value->localidad;
+            $value->barrio;
+        }*/
+
+        $interesados = Interesado::orderBy('id', 'ASC')->paginate(10);
         foreach ($interesados as $value) {
             $value->localidad;
             $value->barrio;
         }
+
     	return view('Interesados.index')->with('interesados',$interesados);
     }
 
-    public function show(){
+    public function show($id){
     	return view('Interesados.mostrar');
     }
 
@@ -39,7 +46,7 @@ class InteresadosController extends Controller
         $interesado->idCliente = 1;
         $interesado->save();
 
-        flash('Interesado agregado con exito')->success();
+        flash('Interesado creado de forma exitosa')->success();
         return redirect()->route('interesados.create');
 
     }

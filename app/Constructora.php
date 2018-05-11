@@ -13,7 +13,7 @@ class Constructora extends Model
 
     public function localidad()
     {
-        return $this->belongsTo('App\Localidad');
+        return $this->belongsTo('App\Localidad','idLocalidad');
     }
 
     public function imuebles()
