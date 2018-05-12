@@ -11,7 +11,6 @@ class Usuario extends Model
 
     protected $fillable = ['user','password','idCliente'];
 
-    @var array
     protected $hidden = [
         'password', 'remember_token',
     ];

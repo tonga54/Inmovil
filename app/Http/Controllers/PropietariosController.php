@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 use App\Propietario;
 use App\Http\Requests\PropietarioRequest;
 
+//MUY IMPORTANTE
+use Illuminate\Support\Facades\Auth;
+
 class PropietariosController extends Controller
 {
     public function index()
     {
-    	$propietarios = Propietario::orderBy('id', 'ASC')->paginate(10);
+    	$propietarios = Propietario::where('idCliente', Auth::user()->idCliente)->orderBy('nombre', 'desc')->paginate(10);
         foreach ($propietarios as $value) {
             $value->localidad;
             $value->barrio;
@@ -55,4 +58,5 @@ class PropietariosController extends Controller
 	public function update(PropietarioRequest $request, $id){
 
 	}
+    
 }

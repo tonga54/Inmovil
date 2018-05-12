@@ -6,23 +6,27 @@ use App\Interesado;
 use App\Http\Requests\InteresadoRequest;
 use App\Http\Requests\InteresadoRequestUpdate;
 
+//MUY IMPORTANTE
+use Illuminate\Support\Facades\Auth;
+
 class InteresadosController extends Controller
 {
+
+    public function __construct(){
+        //$this->middleware('auth');
+    }
+
     public function index()
     {	
-        /*$interesados = Interesado::all();
-        foreach ($interesados as $value) {
-            $value->localidad;
-            $value->barrio;
-        }*/
-
-        $interesados = Interesado::orderBy('id', 'ASC')->paginate(10);
+        
+        $interesados = Interesado::where('idCliente', Auth::user()->idCliente)->orderBy('nombre', 'desc')->paginate(10);
         foreach ($interesados as $value) {
             $value->localidad;
             $value->barrio;
         }
 
     	return view('Interesados.index')->with('interesados',$interesados);
+        
     }
 
     public function show($id){
@@ -43,7 +47,7 @@ class InteresadosController extends Controller
         unset($arrInteresado['slcBarrios']);
 
     	$interesado = new Interesado($arrInteresado);
-        $interesado->idCliente = 1;
+        $interesado->idCliente = Auth::user()->idCliente;
         $interesado->save();
 
         flash('Interesado creado de forma exitosa')->success();

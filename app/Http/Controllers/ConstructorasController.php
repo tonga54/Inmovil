@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 use App\Constructora;
 use App\Http\Requests\ConstructoraRequest;
 
+//MUY IMPORTANTE
+use Illuminate\Support\Facades\Auth;
+
 class ConstructorasController extends Controller
 {
     public function index()
     {
-        $constructoras = Constructora::orderBy('id', 'ASC')->paginate(10);
+        $constructoras = Constructora::where('idCliente', Auth::user()->idCliente)->orderBy('nombre', 'desc')->paginate(10);
     	//$constructoras = Constructora::all();
     	foreach ($constructoras as $value) {
             $value->localidad;
