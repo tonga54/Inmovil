@@ -18,10 +18,12 @@ class CreateUsuariosTable extends Migration
             $table->string('user')->unique();
             $table->string('password');
             $table->unsignedInteger('idCliente')->index();
+            $table->unsignedInteger('idFoto')->index();
             $table->rememberToken();
             $table->timestamps();
 
             $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade');
+            $table->foreign('idFoto')->references('id')->on('usuario_foto')->onDelete('cascade');
         });
     }
 

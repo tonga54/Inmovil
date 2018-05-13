@@ -26,9 +26,24 @@ Route::group(['middleware' => 'auth','prefix' => 'sistema'], function(){
 		'as'	=> 'interesados.destroy' 
 	]);
 	
+	Route::get('propietarios/{id}/destroy',[
+		//Que controlador usar
+		'uses'	=> 'PropietariosController@destroy',
+		//nombre a la ruta
+		'as'	=> 'propietarios.destroy' 
+	]);
+
+	Route::get('constructoras/{id}/destroy',[
+		//Que controlador usar
+		'uses'	=> 'ConstructorasController@destroy',
+		//nombre a la ruta
+		'as'	=> 'constructoras.destroy' 
+	]);
+
 	Route::resource('clientes','ClientesController');
 	Route::resource('propietarios','PropietariosController');
 	Route::resource('constructoras','ConstructorasController');
+	Route::resource('inmuebles','InmueblesController');
 });
 
 Route::get('logout',[

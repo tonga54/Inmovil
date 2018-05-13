@@ -54,7 +54,7 @@
 
                 <div class="form-group">
                   {!! Form::label('documento','Documento (Ci,Rut,etc)') !!}
-                  {!! Form::tel('documento',null,['class' => 'form-control', 'placeholder' => 'Telefono..','required']) !!}
+                  {!! Form::tel('documento',null,['class' => 'form-control', 'placeholder' => 'Documento..','required']) !!}
                 </div>
 
                 <div class="form-group">

@@ -40,7 +40,7 @@ class PropietariosController extends Controller
         unset($arrPropietario['slcBarrios']);
 
         $propietario = new Propietario($arrPropietario);
-        $propietario->idCliente = 1;
+        $propietario->idCliente = Auth::user()->idCliente;
         $propietario->save();
 
         flash('Propietario agregado con exito')->success();
@@ -48,15 +48,34 @@ class PropietariosController extends Controller
     }
 
     public function destroy($id){
+        $propietario = Propietario::find($id);
+        $propietario->delete();
 
+        flash('Propietario elminado de forma exitosa')->error();
+        return redirect()->route('propoietarios.index');
     }
 
 	public function edit($id){
-
+        $propietario = Propietario::find($id);
+        return view('propietarios.edit')->with('propietario',$propietario);
 	}
 	
 	public function update(PropietarioRequest $request, $id){
+        $propietario = Propietario::find($id);
 
+        //Cambio el nombre a los indices para que sean iguales que en la base
+        $arrPropietario = $request->all();
+        $arrPropietario['idLocalidad'] = $arrPropietario['slcLocalidad'];
+        unset($arrPropietario['slcLocalidad']);
+        $arrPropietario['idBarrio'] = $arrPropietario['slcBarrios'];
+        unset($arrPropietario['slcBarrios']);
+
+        //toma el objeto de la base y lo remplaza por lo del form
+        $propietario->fill($arrPropietario);
+        $propietario->save();
+        
+        flash('Propietario modificado con exito')->warning();
+        return redirect()->route('propietarios.index');
 	}
     
 }

@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="form-group col-md-3 col-md-offset-9 top-buffer">
-                	{!! Form::submit('Registrar', ['class' => 'btn btn-block btn-success']) !!}
+                	{!! Form::submit('Editar', ['class' => 'btn btn-block btn-success']) !!}
                 </div>
                 
               {!! Form::close() !!}

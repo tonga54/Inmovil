@@ -261,14 +261,14 @@ desired effect
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Inicio</span></a></li>
 
-        <li class="treeview">
+        <li class="treeview @yield('nav2')">
           <a href="#"><i class="fa fa-link"></i> <span>Inmuebles</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Inicio</a></li>
+            <li><a href="{{ url('sistema/inmuebles') }}">Inicio</a></li>
             <li><a href="#">Cargar</a></li>
             <li><a href="#">Buscar</a></li>
           </ul>
@@ -464,8 +464,6 @@ desired effect
 <!-- AdminLTE App -->
 <script src="{{asset('plugins/dist/js/adminlte.min.js')}}"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
+
 </body>
 </html>

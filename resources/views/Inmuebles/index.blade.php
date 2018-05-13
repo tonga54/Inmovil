@@ -1,32 +1,32 @@
 @extends('Template.main')
 
 @section('titulo')
-	Buscar
+  Buscar
 @endsection
 
 @section('cantidadMensajes')
-	2
+  2
 @endsection
 
 @section('cantidadNotificaciones')
-	3
+  3
 @endsection
 
 @section('cantidadTareas')
-	1
+  1
 @endsection
 
 @section('tituloPagina')
-	Interesados
+  Interesados
 @endsection
 
 @section('descripcionPagina')
-	Aqui podras gestionar tus interesados
+  Aqui podras gestionar tus inmuebles
 @endsection
 
 @section('breadcrumbs')
         <li class="active">
-          <i class="fa fa-dashboard"></i> Interesados
+          <i class="fa fa-dashboard"></i> Inmubles
         </li>
 @endsection
 
@@ -35,10 +35,7 @@
 
 
 
-
-
-
-  <div class="box box-default">
+      <div class="box box-default">
         <div class="box-header with-border">
           <h3 class="box-title">Filtrar</h3>
 
@@ -48,14 +45,11 @@
           </div>
         </div>
         <!-- /.box-header -->
-        
-        {!! Form::open(['route' => 'interesados.index', 'method' => 'GET', 'class' => 'box-body']) !!}
+        <div class="box-body">
           <div class="row">
-
-            {{-- <div class="col-md-2">
-
+            <div class="col-md-2">
               <div class="form-group">
-                <label>Localidad</label>
+                <label>Tipo operacion</label>
                 <select class="form-control select2" style="width: 100%;">
                   <option selected="selected">Alabama</option>
                   <option>Alaska</option>
@@ -71,7 +65,7 @@
 
             <div class="col-md-2">
               <div class="form-group">
-                <label>Barrio</label>
+                <label>Tipo de inmueble</label>
                 <select class="form-control select2" style="width: 100%;">
                   <option selected="selected">Alabama</option>
                   <option>Alaska</option>
@@ -83,58 +77,79 @@
                 </select>
               </div>
               <!-- /.form-group -->
-            </div> --}}
+            </div>
 
             <!-- /.col -->
-
-
-
-
-            <div class="col-md-2">
+            <div class="col-md-3">
               <div class="form-group">
-                <label>Nombre</label>
-
-                {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Nombre..']) !!}
-                {{-- <input type="text" class="form-control"> --}}
+                <label>Multiple</label>
+                <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
+                        style="width: 100%;">
+                  <option>Alabama</option>
+                  <option>Alaska</option>
+                  <option>California</option>
+                  <option>Delaware</option>
+                  <option>Tennessee</option>
+                  <option>Texas</option>
+                  <option>Washington</option>
+                </select>
               </div>
+
+              <!-- /.form-group -->
             </div>
 
 
-            <div class="col-md-2">
-              <div class="form-group">
-                <label>Telefono</label>
 
-                {!! Form::text('telefono', null, ['class' => 'form-control', 'placeholder' => 'Telefono..']) !!}
-                {{-- <input type="text" class="form-control"> --}}
-              </div>
+
+
+            <div class="col-md-1">
+              <div class="form-group">
+                  <label>Precio min</label>
+                  <input type="number" class="form-control" placeholder="Enter ...">
+                </div>
+                <div class="form-group">
+                  <label>Precio max</label>
+                  <input type="number" class="form-control" placeholder="Enter ...">
+                </div>
+              <!-- /.form-group -->
+            </div>
+
+            <div class="col-md-1">
+              
+              <!-- /.form-group -->
             </div>
 
 
-            <div class="col-md-2">
-              <div class="form-group">
-                <label>Email</label>
-
-                {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email..']) !!}
-                {{-- <input type="text" class="form-control"> --}}
-              </div>
-            </div>
-        
+            <!-- /.col -->
           </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          <div class="col-md-1 col-md-offset-11">
+            <button type="button" class="btn btn-block btn-success">Buscar</button>
+          </div>
+          
+        </div>
+      </div>
 
-          <input type="submit" name="">
-        {!! Form::close() !!}
-</div>
+
+
+
+
+
+
 
 
     <div class="row">
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Hover Data Table</h3>
+            <h3 class="box-title">Inmuebles</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body table-responsive">
-            <table id="example1" class="table table-bordered table-hover">
+            <table id="example2" class="table table-bordered table-hover">
               <thead>
               <tr>
                 <th>Nombre</th>
@@ -145,21 +160,7 @@
               </tr>
               </thead>
               <tbody>
-                @foreach ($interesados as $int)
-                  <tr>
-                    <td>{{$int->nombre}} {{$int->apellido}}</td>
-                    <td>{{$int->telefono}}</td>
-                    <td>{{$int->email}}</td>
-                    <td>{{$int->localidad->nombre}}</td>
-                    <td>{{$int->barrio->nombre}}</td>
-                    <td>
-                      <a href="{{ route('interesados.edit', $int->id) }}" class="btn btn-primary btn-xs">Editar</a>
-                    </td>
-                    <td>
-                      <a href="{{ route('interesados.destroy', $int->id) }}" onclick="return confirm('Seguro que deseas borrar el interesado?')" class="btn btn-primary btn-xs">Eliminar</a>
-                    </td>
-                  </tr>
-                @endforeach
+                
               </tbody>
               <tfoot>
               <tr>
@@ -172,13 +173,13 @@
               </tfoot>
             </table>
             
-            {{ $interesados->links() }}
+            
           </div>
           <!-- /.box-body -->
         </div>
         
     </div>
   </div>
-	
-
+  
 @endsection
+

@@ -24,6 +24,10 @@
 	Aqui podras gestionar las empresas constructoras
 @endsection
 
+@section('nav5')
+  active
+@endsection
+
 @section('breadcrumbs')
         <li class="active">
           <i class="fa fa-dashboard"></i> Constructoras
@@ -38,7 +42,7 @@
             <h3 class="box-title">Hover Data Table</h3>
           </div>
           <!-- /.box-header -->
-          <div class="box-body">
+          <div class="box-body table-responsive">
             <table id="example2" class="table table-bordered table-hover">
               <thead>
               <tr>
@@ -57,8 +61,12 @@
                     <td>{{$const->documento}}</td>
                     <td>{{$const->email}}</td>
                     <td>{{$const->localidad->nombre}}</td>
-                    <td><a href="{{ route('constructoras.edit', $const->id) }}" class="btn btn-primary btn-xs">Editar</a><td>
-                    <td><a href="{{ route('constructoras.destroy', $const->id) }}" onclick="return confirm('Seguro que deseas borrar el interesado?')" class="btn btn-primary btn-xs">Eliminar</a><td>
+                    <td>
+                      <a href="{{ route('constructoras.edit', $const->id) }}" class="btn btn-primary btn-xs">Editar</a>
+                    </td>
+                    <td>
+                      <a href="{{ route('constructoras.destroy', $const->id) }}" onclick="return confirm('Seguro que deseas borrar el interesado?')" class="btn btn-primary btn-xs">Eliminar</a>
+                    </td>
                   </tr>
                 @endforeach
               </tbody>

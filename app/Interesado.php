@@ -31,8 +31,24 @@ class Interesado extends Model
         return $this->belongsToMany('App\Inmueble');
     }
 
-    public function cliente(){
+    public function cliente()
+    {
         return $this->belongsTo('App\Cliente','idCliente');
+    }
+
+    public function scopeEmail($query, $email)
+    {
+        return $query->where('email','LIKE', "%" . $email . "%");   
+    }
+
+    public function scopeNombre($query, $nombre)
+    {
+        return $query->where('nombre','LIKE', "%" . $nombre . "%");   
+    }
+
+    public function scopeTelefono($query, $telefono)
+    {
+        return $query->where('telefono','LIKE', "%" . $telefono . "%");   
     }
 
 }

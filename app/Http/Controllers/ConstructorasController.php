@@ -38,7 +38,7 @@ class ConstructorasController extends Controller
         unset($arrConstructora['slcLocalidad']);
 
         $constructora = new Constructora($arrConstructora);
-        $constructora->idCliente = 1;
+        $constructora->idCliente = Auth::user()->idCliente;
         $constructora->save();
 
         flash('Constructora creada de forma exitosa')->success();
@@ -46,15 +46,32 @@ class ConstructorasController extends Controller
     }
 
     public function destroy($id){
+        $constructora = Propietario::find($id);
+        $constructora->delete();
 
+        flash('Constructora elminada de forma exitosa')->error();
+        return redirect()->route('constructoras.index');
     }
 
 	public function edit($id){
-
+        $constructora = Constructora::find($id);
+        return view('constructoras.edit')->with('constructora',$constructora);
 	}
 	
 	public function update(ConstructoraRequest $request, $id){
+        $constructora = Constructora::find($id);
 
+        //Cambio el nombre a los indices para que sean iguales que en la base
+        $arrConstructora = $request->all();
+        $arrConstructora['idLocalidad'] = $arrConstructora['slcLocalidad'];
+        unset($arrConstructora['slcLocalidad']);
+
+        //toma el objeto de la base y lo remplaza por lo del form
+        $constructora->fill($arrConstructora);
+        $constructora->save();
+        
+        flash('Constructora modificada con exito')->warning();
+        return redirect()->route('constructoras.index');
 	}
 
 }

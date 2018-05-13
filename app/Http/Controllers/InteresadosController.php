@@ -16,14 +16,19 @@ class InteresadosController extends Controller
         //$this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {	
-        
-        $interesados = Interesado::where('idCliente', Auth::user()->idCliente)->orderBy('nombre', 'desc')->paginate(10);
+
+        // 
+        $interesados = Interesado::Email($request->email)->Nombre($request->nombre)->Telefono($request->telefono)->where('idCliente', Auth::user()->idCliente)->orderBy('nombre', 'desc')->paginate(10);
+        // dd($interesados);
+
         foreach ($interesados as $value) {
             $value->localidad;
             $value->barrio;
         }
+
+        //dd($interesados);
 
     	return view('Interesados.index')->with('interesados',$interesados);
         

@@ -9,7 +9,7 @@
 @endsection
 
 @section('descripcionPagina')
-	
+
 @endsection
 
 @section('breadcrumbs')
@@ -36,30 +36,35 @@
 		<div class='col-md-8 col-md-offset-2'>
 			<div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Editar interesado</h3>
+              <h3 class="box-title">Editar propietario</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              {!! Form::open(['route' => ['interesados.update', $interesado], 'method' => 'PUT']) !!}
+              {!! Form::open(['route' => ['propietarios.update', $propietario], 'method' => 'PUT']) !!}
                 <!-- text input -->
                 <div class="form-group">
                   {!! Form::label('txtNombre','Nombre') !!}
-                  {!! Form::text('nombre',$interesado->nombre,['class' => 'form-control', 'placeholder' => 'Nombre..','required']) !!}
+                  {!! Form::text('nombre',$propietario->nombre,['class' => 'form-control', 'placeholder' => 'Nombre..','required']) !!}
                 </div>
 
                 <div class="form-group">
                   {!! Form::label('txtApellido','Apellido') !!}
-                  {!! Form::text('apellido',$interesado->apellido,['class' => 'form-control', 'placeholder' => 'Apellido..','required']) !!}
+                  {!! Form::text('apellido',$propietario->apellido,['class' => 'form-control', 'placeholder' => 'Apellido..','required']) !!}
                 </div>
 
                 <div class="form-group">
                   {!! Form::label('txtTelefono','Telefono') !!}
-                  {!! Form::tel('telefono',$interesado->telefono,['class' => 'form-control', 'placeholder' => 'Telefono..','required']) !!}
+                  {!! Form::tel('telefono',$propietario->telefono,['class' => 'form-control', 'placeholder' => 'Telefono..','required']) !!}
+                </div>
+
+                <div class="form-group">
+                  {!! Form::label('documento','Documento') !!}
+                  {!! Form::text('documento',$propietario->documento,['class' => 'form-control', 'placeholder' => 'Documento..','required']) !!}
                 </div>
 
                 <div class="form-group">
                   {!! Form::label('txtEmail','Email') !!}
-                  {!! Form::email('email',$interesado->email,['class' => 'form-control', 'placeholder' => 'Email..','required']) !!}
+                  {!! Form::email('email',$propietario->email,['class' => 'form-control', 'placeholder' => 'Email..','required']) !!}
                 </div>
 
                 <div class="form-group">
@@ -72,8 +77,13 @@
                   {!! Form::select('slcBarrios',['' =>'Seleccione un barrio', '1' => 'Union'], null,['class' => 'form-control']) !!}
                 </div>
 
+                <div class="form-group">
+                  {!! Form::label('direccion','Direccion') !!}
+                  {!! Form::text('direccion',$propietario->direccion,['class' => 'form-control', 'placeholder' => 'Direccion..','required']) !!}
+                </div>
+
                 <div class="form-group col-md-3 col-md-offset-9 top-buffer">
-                	{!! Form::submit('Registrar', ['class' => 'btn btn-block btn-success']) !!}
+                	{!! Form::submit('Editar', ['class' => 'btn btn-block btn-success']) !!}
                 </div>
                 
               {!! Form::close() !!}

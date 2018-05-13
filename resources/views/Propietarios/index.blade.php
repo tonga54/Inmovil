@@ -17,7 +17,7 @@
 @endsection
 
 @section('tituloPagina')
-	Interesados
+	Propietarios
 @endsection
 
 @section('descripcionPagina')
@@ -38,7 +38,7 @@
             <h3 class="box-title">Hover Data Table</h3>
           </div>
           <!-- /.box-header -->
-          <div class="box-body">
+          <div class="box-body table-responsive">
             <table id="example2" class="table table-bordered table-hover">
               <thead>
               <tr>
@@ -60,8 +60,13 @@
                     <td>{{$prop->documento}}</td>
                     <td>{{$prop->localidad->nombre}}</td>
                     <td>{{$prop->barrio->nombre}}</td>
-                    <td><a href="{{ route('propietarios.edit', $prop->id) }}" class="btn btn-primary btn-xs">Editar</a><td>
-                    <td><a href="{{ route('propietarios.destroy', $prop->id) }}" onclick="return confirm('Seguro que deseas borrar el interesado?')" class="btn btn-primary btn-xs">Eliminar</a><td>
+                    <td>{{$prop->direccion}}</td>
+                    <td>
+                      <a href="{{ route('propietarios.edit', $prop->id) }}" class="btn btn-primary btn-xs">Editar</a>
+                    </td>
+                    <td>
+                      <a href="{{ route('propietarios.destroy', $prop->id) }}" onclick="return confirm('Seguro que deseas borrar el interesado?')" class="btn btn-primary btn-xs">Eliminar</a>
+                    </td>
                   </tr>
                 @endforeach
               </tbody>
