@@ -7,10 +7,9 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Inmueble extends Model
 {
-
     use Sluggable;
+  
     protected $table = "inmuebles";
-
 
     protected $fillable = ['supTotal', 'supCubierta', 'dormitorios', 'banos', 'cocheras', 'pisos', 'antiguedad', 'orientacion', 'precio', 'idTipoOperacion', 'estado', 'descripcion', 'idLocalidad', 'idBarrio', 'direccion', 'idPropietario', 'idConstructora'];
 
@@ -48,20 +47,10 @@ class Inmueble extends Model
     {
         return $this->belongsToMany('App\Interesado');
     }
-
-    public function ambientes()
+    
+    public function caracteristicas()
     {
-        return $this->belongsToMany('App\Ambiente');
-    }
-
-    public function comodidades()
-    {
-        return $this->belongsToMany('App\Comodidad');
-    }
-
-    public function caracteristicasAdicionales()
-    {
-        return $this->belongsToMany('App\CaracteristicaAdicional');
+        return $this->belongsToMany('App\Caracteristica');
     }
 
     public function cliente(){

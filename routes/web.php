@@ -17,8 +17,6 @@ Route::group(['middleware' => 'auth','prefix' => 'sistema'], function(){
 	Route::get('', function (){
 		return view('welcome');
 	});
-
-	Route::resource('interesados','InteresadosController');
 	Route::get('interesados/{id}/destroy',[
 		//Que controlador usar
 		'uses'	=> 'InteresadosController@destroy',
@@ -40,6 +38,7 @@ Route::group(['middleware' => 'auth','prefix' => 'sistema'], function(){
 		'as'	=> 'constructoras.destroy' 
 	]);
 
+	Route::resource('interesados','InteresadosController');
 	Route::resource('clientes','ClientesController');
 	Route::resource('propietarios','PropietariosController');
 	Route::resource('constructoras','ConstructorasController');

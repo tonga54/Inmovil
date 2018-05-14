@@ -23,7 +23,7 @@ class CreateUsuariosTable extends Migration
             $table->timestamps();
 
             $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade');
-            $table->foreign('idFoto')->references('id')->on('usuario_foto')->onDelete('cascade');
+            $table->foreign('idFoto')->references('id')->on('usuariosFotos')->onDelete('cascade');
         });
     }
 

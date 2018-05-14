@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\TipoOperacion;
+use App\Caracteristica;
+
 
 class InmueblesController extends Controller
 {
@@ -23,7 +26,11 @@ class InmueblesController extends Controller
      */
     public function create()
     {
-        //
+        $tiposOperaciones = TipoOperacion::orderBy('nombre', 'ASC')->pluck('nombre','id');
+        $caracteristicas = Caracteristica::orderBy('tipo','ASC')->get();
+
+        return view('Inmuebles.create',['tiposOperaciones' => $tiposOperaciones, 'caracteristicas' => $caracteristicas]);
+        //return view("Inmuebles.create");
     }
 
     /**
@@ -34,7 +41,7 @@ class InmueblesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

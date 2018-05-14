@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class InmuebleAmbiente extends Model
+class Caracteristica extends Model
 {
-    protected $table = "inmuebles_ambientes";
+    protected $table = "caracteristicas";
 
 
-    protected $fillable = ['idInmueble', 'idAmbientes'];
-    /*
+    protected $fillable = ['id','nombre','tipo'];
+
     public function inmuebles()
     {
         return $this->belongsToMany('App\Inmueble');
@@ -20,5 +20,4 @@ class InmuebleAmbiente extends Model
     {
         return $this->belongsToMany('App\TipoOperacion');
     }
-    */
 }

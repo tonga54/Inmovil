@@ -13,7 +13,7 @@ class CreateUsuarioFoto extends Migration
      */
     public function up()
     {
-        Schema::create('usuario_foto', function (Blueprint $table) {
+        Schema::create('usuariosFotos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ruta',128)->unique();
             $table->timestamps();

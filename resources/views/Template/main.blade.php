@@ -269,7 +269,7 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ url('sistema/inmuebles') }}">Inicio</a></li>
-            <li><a href="#">Cargar</a></li>
+            <li><a href="{{ url('sistema/inmuebles/create')}}">Cargar</a></li>
             <li><a href="#">Buscar</a></li>
           </ul>
         </li>

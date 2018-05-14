@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class InmuebleCaracteristicaAdicional extends Model
+class InmuebleCaracteristica extends Model
 {
-    protected $table = "inmuebles_cadic";
+    protected $table = "inmuebles_caracteristicas";
 
 
     protected $fillable = ['idInmueble', 'idCaracteristica'];

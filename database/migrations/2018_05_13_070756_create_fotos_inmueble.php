@@ -13,9 +13,9 @@ class CreateFotosInmueble extends Migration
      */
     public function up()
     {
-        Schema::create('fotos_inmueble', function (Blueprint $table) {
+        Schema::create('fotosInmueble', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('url',32)->unique();
+            $table->string('url',64)->unique();
             $table->unsignedInteger('idInmueble')->index();
             $table->timestamps();
 
