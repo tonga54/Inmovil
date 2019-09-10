@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Constructora;
 use App\Http\Requests\ConstructoraRequest;
+use App\Localidad;
 
 //MUY IMPORTANTE
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,9 @@ class ConstructorasController extends Controller
     }
 
     public function create(){
-        return view('constructoras.create');
+        $localidades = Localidad::orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
+
+        return view('constructoras.create', ["localidades" => $localidades]);
     }
 
     public function store(ConstructoraRequest $request){

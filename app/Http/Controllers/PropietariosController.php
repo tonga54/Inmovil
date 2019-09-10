@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Propietario;
 use App\Http\Requests\PropietarioRequest;
+use App\Localidad;
+use App\Barrio;
 
 //MUY IMPORTANTE
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +29,10 @@ class PropietariosController extends Controller
     }
 
     public function create(){
-        return view('propietarios.create');
+        $localidades = Localidad::orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
+        $barrios = Barrio::orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
+
+        return view('propietarios.create', ["barrios" => $barrios, "localidades" => $localidades]);
     }
 
     public function store(PropietarioRequest $request){

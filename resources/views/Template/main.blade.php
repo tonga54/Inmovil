@@ -268,9 +268,9 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('sistema/inmuebles') }}">Inicio</a></li>
-            <li><a href="{{ url('sistema/inmuebles/create')}}">Cargar</a></li>
-            <li><a href="#">Buscar</a></li>
+            <li><a href="{{ url('sistema/inmuebles') }}">Ver</a></li>
+            <li><a href="{{ url('sistema/inmuebles/create')}}">Crear inmueble</a></li>
+            <!-- <li><a href="#">Buscar</a></li> -->
           </ul>
         </li>
 
@@ -281,9 +281,9 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('sistema/interesados/') }}">Inicio</a></li>
-            <li><a href="{{ url('sistema/interesados/create') }}">Cargar</a></li>
-            <li><a href="#">Buscar</a></li>
+            <li><a href="{{ url('sistema/interesados/') }}">Ver</a></li>
+            <li><a href="{{ url('sistema/interesados/create') }}">Crear interesado</a></li>
+            <!-- <li><a href="#">Buscar</a></li> -->
           </ul>
         </li>
 
@@ -294,9 +294,9 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('sistema/propietarios/') }}">Inicio</a></li>
-            <li><a href="{{ url('sistema/propietarios/create') }}">Cargar</a></li>
-            <li><a href="#">Buscar</a></li>
+            <li><a href="{{ url('sistema/propietarios/') }}">Ver</a></li>
+            <li><a href="{{ url('sistema/propietarios/create') }}">Crear propietario</a></li>
+            <!-- <li><a href="#">Buscar</a></li> -->
           </ul>
         </li>
 
@@ -307,9 +307,9 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('sistema/constructoras/') }}">Inicio</a></li>
-            <li><a href="{{ url('sistema/constructoras/create') }}">Cargar</a></li>
-            <li><a href="#">Buscar</a></li>
+            <li><a href="{{ url('sistema/constructoras/') }}">Ver</a></li>
+            <li><a href="{{ url('sistema/constructoras/create') }}">Crear constructora</a></li>
+            <!-- <li><a href="#">Buscar</a></li> -->
           </ul>
         </li>
 

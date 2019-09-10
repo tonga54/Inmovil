@@ -69,12 +69,12 @@
 
                 <div class="form-group">
                   {!! Form::label('slcLocalidad','Localidades') !!}
-                  {!! Form::select('slcLocalidad',['' =>'Seleccione una localidad', '1' => 'Montevideo'], null,['class' => 'form-control']) !!}
+                  {!! Form::select('slcLocalidad',['' =>'Seleccione una localidad'] + $localidades, null,['class' => 'form-control']) !!}
                 </div>
 
 				        <div class="form-group">
                   {!! Form::label('slcBarrios','Barrios') !!}
-                  {!! Form::select('slcBarrios',['' =>'Seleccione un barrio', '1' => 'Union'], null,['class' => 'form-control']) !!}
+                  {!! Form::select('slcBarrios',['' =>'Seleccione un barrio'] + $barrios, null,['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">

@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use App\Interesado;
 use App\Http\Requests\InteresadoRequest;
 use App\Http\Requests\InteresadoRequestUpdate;
+use App\Localidad;
+use App\Barrio;
 
 //MUY IMPORTANTE
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +41,10 @@ class InteresadosController extends Controller
     }
 
     public function create(){
-    	return view('interesados.create');
+        $localidades = Localidad::orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
+        $barrios = Barrio::orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
+
+    	return view('interesados.create', ["barrios" => $barrios, "localidades" => $localidades]);
     }
 
     public function store(InteresadoRequest $request){

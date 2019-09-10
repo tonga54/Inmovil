@@ -5,7 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\TipoOperacion;
 use App\Caracteristica;
+use App\Localidad;
+use App\Barrio;
+use App\Constructora;
+use App\Propietario;
 
+//MUY IMPORTANTE
+use Illuminate\Support\Facades\Auth;
 
 class InmueblesController extends Controller
 {
@@ -26,10 +32,15 @@ class InmueblesController extends Controller
      */
     public function create()
     {
-        $tiposOperaciones = TipoOperacion::orderBy('nombre', 'ASC')->pluck('nombre','id');
+        
+        $tiposOperaciones = TipoOperacion::orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
+        $localidades = Localidad::orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
+        $barrios = Barrio::orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
         $caracteristicas = Caracteristica::orderBy('tipo','ASC')->get();
+        $propietarios = Propietario::where('idCliente', Auth::user()->idCliente)->orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
+        $constructoras = Constructora::where('idCliente', Auth::user()->idCliente)->orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
 
-        return view('Inmuebles.create',['tiposOperaciones' => $tiposOperaciones, 'caracteristicas' => $caracteristicas]);
+        return view('Inmuebles.create',['tiposOperaciones' => $tiposOperaciones, 'localidades' => $localidades, 'barrios' => $barrios, 'propietarios' => $propietarios, 'constructoras' => $constructoras, 'caracteristicas' => $caracteristicas]);
         //return view("Inmuebles.create");
     }
 

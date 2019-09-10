@@ -1,0 +1,73 @@
+INSERT INTO caracteristicas (nombre, tipo) 
+VALUES 
+("Acceso a internet","CO"),
+("Aire acondicionado","CO"),
+("Área de juegos infantiles","CO"),
+("Ascensor","CO"),
+("Business center","CO"),
+("Calefacción","CO"),
+("Cancha de tenis","CO"),
+("Cancha de basquetbol","CO"),
+("Cancha de paddle","CO"),
+("Chimenea","CO"),
+("Cisterna","CO"),
+("Heladera","CO"),
+("Estacionamiento para visitantes","CO"),
+("Gimnasio","CO"),
+("Jacuzzi","CO"),
+("Lavarropa","CO"),
+("Microondas","CO"),
+("Área de lavandería","CO"),
+("Piscina","CO"),
+("Recepción","CO"),
+("Salón de fiestas","CO"),
+("Salón de usos múltiples","CO"),
+("TV","CO"),
+("TV por cable","CO"),
+("Vajilla","CO"),
+("Valet parking","CO"),
+("Seguridad","CO");
+
+
+
+INSERT INTO caracteristicas (nombre, tipo) 
+VALUES 
+("Agua corriente","CA"),
+("Amoblado","CA"),
+("Gas natural","CA"),
+("Línea telefónica","CA"),
+("Luz eléctrica","CA"),
+("Bebederos","CA"),
+("Casco","CA"),
+("Corral","CA"),
+("Galpón","CA"),
+("Molinos","CA"),
+("Silos","CA"),
+("Tanque de agua","CA"),
+("Apto para familias con niños","CA"),
+("Se admiten mascotas","CA"),
+("Servicio de desayuno","CA"),
+("Servicio de limpieza","CA"),
+("Sistema contra incendio","CA"),
+("Solo familias","CA");
+
+
+INSERT INTO caracteristicas (nombre, tipo) 
+VALUES 
+("Balcón","AM"),
+("Cocina","AM"),
+("Comedor","AM"),
+("Dormitorio de servicio","AM"),
+("Dormitorio en suite","AM"),
+("Estudio","AM"),
+("Jardín","AM"),
+("Living","AM"),
+("Parrillero","AM"),
+("Patio","AM"),
+("Playroom","AM"),
+("Roof garden","AM"),
+("Terraza","AM"),
+("Baño social","AM"),
+("Sala de reuniones","AM"),
+("Lobby","AM"),
+("Area de comedor","AM");
