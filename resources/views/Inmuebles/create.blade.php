@@ -1,9 +1,10 @@
 @extends('Template.main')
-
 @section('titulo')
 Crear inmueble
 @endsection
-
+@section('crsf')
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('tituloPagina')
 Crear inmueble
 @endsection
@@ -44,6 +45,15 @@ Crear inmueble
         <div class="form-group">
           {!! Form::label('titulo','Titulo') !!}
           {!! Form::text('titulo',null,['class' => 'form-control', 'placeholder' => 'Titulo del inmueble..','required']) !!}
+        </div>
+
+        <div class="form-group">
+          {!! Form::label('tiposInmuebles','Tipo de inmueble') !!}
+          {!! Form::select('tipoInmueble',['' => 'Seleccione un tipo de inmueble'] + $tiposInmuebles, null,['class' => 'form-control', 'id' => 'slcTipoInmueble']) !!}
+        </div>
+
+        <div class="form-group" id="tipoOperacion">
+          
         </div>
 
         <div class="form-group">
@@ -92,11 +102,6 @@ Crear inmueble
         </div>
 
         <div class="form-group">
-          {!! Form::label('tipoOperacion','Tipo de operacion') !!}
-          {!! Form::select('tipoOperacion',['' => 'Seleccione un tipo de operacion'] + $tiposOperaciones, null,['class' => 'form-control']) !!}
-        </div>
-
-        <div class="form-group">
           {!! Form::label('estado','Estado') !!}
           {!! Form::text('estado',null,['class' => 'form-control', 'placeholder' => 'Estado..','required']) !!}
         </div>
@@ -131,59 +136,17 @@ Crear inmueble
           {!! Form::select('constructora',['' => 'Seleccione una empresa constructora'] + $constructoras, null,['class' => 'form-control']) !!}
         </div>
 
-        <div class='row'>
-          <h4>Ambientes</h4>
-
-          @foreach ($caracteristicas as $caract)
-          @if($caract->tipo == 'AM')
-          <div class="form-group col-md-4 col-sm-4 col-xs-5">
-            {!! Form::checkbox('caracteristicas[]',$caract->id) !!}
-            {!! Form::label($caract->nombre,$caract->nombre) !!}
-          </div>
-          @endif
-          @endforeach
-        </div>
-        <div class='row'>
-
-          <h4>Caracteristicas adicionales</h4>
-
-          @foreach ($caracteristicas as $caract)
-          @if($caract->tipo == 'CA')
-          <div class="form-group col-md-4 col-sm-4 col-xs-5">
-            {!! Form::checkbox('caracteristicas[]',$caract->id) !!}
-            {!! Form::label($caract->nombre,$caract->nombre) !!}
-          </div>
-          @endif
-          @endforeach
-        </div>
-
-        <div class='row'>
-          <h4>Comodidades</h4>
-
-          @foreach ($caracteristicas as $caract)
-          @if($caract->tipo == 'CO')
-          <div class="form-group col-md-4 col-sm-4 col-xs-5">
-            {!! Form::checkbox('caracteristicas[]',$caract->id) !!}
-            {!! Form::label($caract->nombre,$caract->nombre) !!}
-          </div>
-          @endif
-          @endforeach
-        </div>
-
-        <div class= "row">
-          <h4>Imagenes:</h4>
-        </div>
-
-        <div class="form-group col-md-3 col-md-offset-9 top-buffer">
-          {!! Form::submit('Guardar inmueble', ['class' => 'btn btn-block btn-success']) !!}
-        </div>
-
         {!! Form::close() !!}
 
       </div>
+       
       <!-- /.box-body -->
     </div>
   </div>
 </div>
 
+@endsection
+
+@section('scripts')
+  <script src="{{asset('js/Sistema/Inmueble/create.js')}}"></script>
 @endsection

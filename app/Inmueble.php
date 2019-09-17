@@ -28,9 +28,13 @@ class Inmueble extends Model
         return $this->belongsTo('App\Constructora');
     }
 
-    public function tiposOperacion()
+    public function tipoInmueble(){
+        return $this->belongsTo('App\MlCategorias1');
+    }
+
+    public function tipoOperacion()
     {
-        return $this->belongsTo('App\TipoOperacion');
+        return $this->belongsTo('App\MlCategorias2');
     }
 
     public function barrio()
@@ -47,14 +51,19 @@ class Inmueble extends Model
     {
         return $this->belongsToMany('App\Interesado');
     }
-    
-    public function caracteristicas()
-    {
-        return $this->belongsToMany('App\Caracteristica');
-    }
 
     public function cliente(){
         return $this->belongsTo('App\Cliente');
+    }
+
+    public function atributos()
+    {
+        return $this->belongsToMany('App\MlCategorias3', 'id');
+    }
+
+    public function atributosListables()
+    {
+        return $this->belongsToMany('App\MlCategorias4', 'id');
     }
 
     public function sluggable(){

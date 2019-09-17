@@ -26,7 +26,7 @@ class Interesado extends Model
         return $this->hasMany('App\Operacion');
     }
 
-    public function inmubeles()
+    public function inmuebles()
     {
         return $this->belongsToMany('App\Inmueble');
     }

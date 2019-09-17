@@ -8,6 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>@yield('titulo','Inicio') | Inmovil</title>
+  @yield('crsf')
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{asset('plugins/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
@@ -464,6 +465,15 @@ desired effect
 <!-- AdminLTE App -->
 <script src="{{asset('plugins/dist/js/adminlte.min.js')}}"></script>
 
+<script>
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')     
+    }
+}); 
+</script>
+
+@yield('scripts')
 
 </body>
 </html>

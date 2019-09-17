@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCaracteristicasTable extends Migration
+class CreateMlCategorias01Table extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateCaracteristicasTable extends Migration
      */
     public function up()
     {
-        Schema::create('caracteristicas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre',32)->unique();
-            $table->string('tipo',2);
-            $table->timestamps();
+        Schema::create('mlCategorias1', function (Blueprint $table) {
+            $table->string('id', 12)->primary();
+            $table->string('name',32);    
         });
     }
 
@@ -28,6 +26,6 @@ class CreateCaracteristicasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('caracteristicas');
+        Schema::dropIfExists('mlCategorias1');
     }
 }

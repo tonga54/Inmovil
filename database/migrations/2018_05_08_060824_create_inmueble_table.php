@@ -25,7 +25,7 @@ class CreateInmuebleTable extends Migration
             $table->integer('antiguedad');
             $table->integer('orientacion');
             $table->decimal('precio',12,2);
-            $table->unsignedInteger('idTipoOperacion');
+            $table->string('idTipoOperacion',12);
             $table->string('estado');
             $table->string('descripcion');
             $table->unsignedInteger('idLocalidad')->index();
@@ -36,7 +36,7 @@ class CreateInmuebleTable extends Migration
             $table->unsignedInteger('idCliente')->index();
             $table->timestamps();
 
-            $table->foreign('idTipoOperacion')->references('id')->on('tiposOperaciones')->onDelete('cascade');
+            $table->foreign('idTipoOperacion')->references('id')->on('mlCategorias2')->onDelete('cascade');
             $table->foreign('idLocalidad')->references('id')->on('localidades')->onDelete('cascade');
             $table->foreign('idBarrio')->references('id')->on('barrios')->onDelete('cascade');
             $table->foreign('idPropietario')->references('id')->on('propietarios')->onDelete('cascade');
@@ -45,16 +45,16 @@ class CreateInmuebleTable extends Migration
 
         });
 
-        Schema::create('inmuebles_caracteristicas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('idInmueble')->index();
-            $table->unsignedInteger('idCaracteristica')->index();
-            $table->timestamps();
+        // Schema::create('inmuebles_atributos', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->unsignedInteger('idInmueble')->index();
+        //     $table->string('idAtributo', 64)->index();
+        //     $table->timestamps();
 
-            $table->foreign('idInmueble')->references('id')->on('tiposOperaciones')->onDelete('cascade');
-            $table->foreign('idCaracteristica')->references('id')->on('caracteristicas')->onDelete('cascade');
+        //     $table->foreign('idInmueble')->references('id')->on('inmuebles')->onDelete('cascade');
+        //     $table->foreign('idAtributo')->references('id')->on('mlCategorias3')->onDelete('cascade');
 
-        });
+        // });
 
     }
 

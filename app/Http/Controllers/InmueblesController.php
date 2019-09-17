@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TipoOperacion;
-use App\Caracteristica;
+use App\MlCategorias1;
+use App\MlCategorias2;
+use App\MlCategorias3;
+use App\MlCategorias4;
 use App\Localidad;
 use App\Barrio;
 use App\Constructora;
@@ -33,14 +35,17 @@ class InmueblesController extends Controller
     public function create()
     {
         
-        $tiposOperaciones = TipoOperacion::orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
+
+        $tiposInmuebles = MlCategorias1::orderBy('name', 'ASC')->pluck('name','id')->toArray();
+        // $tiposOperaciones = TipoOperacion::orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
         $localidades = Localidad::orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
         $barrios = Barrio::orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
-        $caracteristicas = Caracteristica::orderBy('tipo','ASC')->get();
+        // $caracteristicas = Caracteristica::orderBy('tipo','ASC')->get();
         $propietarios = Propietario::where('idCliente', Auth::user()->idCliente)->orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
         $constructoras = Constructora::where('idCliente', Auth::user()->idCliente)->orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
-
-        return view('Inmuebles.create',['tiposOperaciones' => $tiposOperaciones, 'localidades' => $localidades, 'barrios' => $barrios, 'propietarios' => $propietarios, 'constructoras' => $constructoras, 'caracteristicas' => $caracteristicas]);
+        // dd(MlCategorias1::orderBy('name')->pluck('name','id')->toArray());
+        // return view('Inmuebles.create',['tiposOperaciones' => $tiposOperaciones, 'localidades' => $localidades, 'barrios' => $barrios, 'propietarios' => $propietarios, 'constructoras' => $constructoras, 'caracteristicas' => $caracteristicas]);
+        return view('Inmuebles.create',['tiposInmuebles' => $tiposInmuebles, 'localidades' => $localidades, 'barrios' => $barrios, 'propietarios' => $propietarios, 'constructoras' => $constructoras]);
         //return view("Inmuebles.create");
     }
 
@@ -98,5 +103,31 @@ class InmueblesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function obtenerTiposOperaciones()
+    {
+        $parentId = $_GET['idCategoriaPadre'];
+        $json = MlCategorias2::where('parentId', $parentId)->get()->toJson();
+        echo $json;
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function obtenerAtributosTipoOperacion(){
+        $parentId = $_GET['idTipoOperacion'];
+        $json = MlCategorias3::where('parentId', $parentId)->get()->load("mlcategorias4");
+        $json = $json->toJson();
+        echo($json);
     }
 }

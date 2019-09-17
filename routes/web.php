@@ -38,11 +38,22 @@ Route::group(['middleware' => 'auth','prefix' => 'sistema'], function(){
 		'as'	=> 'constructoras.destroy' 
 	]);
 
+	Route::get('inmuebles/obtenerTiposOperaciones',[
+		'uses'	=> 'InmueblesController@obtenerTiposOperaciones',
+		'as'	=> 'inmuebles.obtenerTiposOperaciones'
+	]);
+
+	Route::get('inmuebles/obtenerAtributosTipoOperacion',[
+		'uses'	=> 'InmueblesController@obtenerAtributosTipoOperacion',
+		'as'	=> 'inmuebles.obtenerAtributosTipoOperacion'
+	]);
+
 	Route::resource('interesados','InteresadosController');
 	Route::resource('clientes','ClientesController');
 	Route::resource('propietarios','PropietariosController');
 	Route::resource('constructoras','ConstructorasController');
 	Route::resource('inmuebles','InmueblesController');
+	
 });
 
 Route::get('logout',[
