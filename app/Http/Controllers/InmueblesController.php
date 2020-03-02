@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Inmueble;
 use App\MlCategorias1;
 use App\MlCategorias2;
 use App\MlCategorias3;
@@ -34,8 +35,9 @@ class InmueblesController extends Controller
      */
     public function create()
     {
-        
-
+        $inmuebles = Inmueble::find(3)->load("mlCategorias3");
+        dd($inmuebles);
+        die();
         $tiposInmuebles = MlCategorias1::orderBy('name', 'ASC')->pluck('name','id')->toArray();
         // $tiposOperaciones = TipoOperacion::orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
         $localidades = Localidad::orderBy('nombre', 'ASC')->pluck('nombre','id')->toArray();
@@ -126,7 +128,11 @@ class InmueblesController extends Controller
      */
     public function obtenerAtributosTipoOperacion(){
         $parentId = $_GET['idTipoOperacion'];
-        $json = MlCategorias3::where('parentId', $parentId)->get()->load("mlcategorias4");
+        $json = MlCategorias3::where('parentId', $parentId)
+        ->orderBy("attribute_group_name", "desc")
+        ->orderBy("name", "asc")
+        ->get()
+        ->load("mlcategorias4");
         $json = $json->toJson();
         echo($json);
     }

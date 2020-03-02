@@ -16,8 +16,8 @@ class MlCategorias1 extends Model
         return $this->hasMany('App\MlCategorias2', 'parentId', 'id');
     }
 
-    public function tiposInmuebles(){
-        return $this->hasMany('App\Inmueble', 'id');
+    public function inmuebles(){
+        return $this->hasMany('App\Inmueble', 'id', 'mlCategorias1');
     }
     
 }

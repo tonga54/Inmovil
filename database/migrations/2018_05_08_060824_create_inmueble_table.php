@@ -16,21 +16,13 @@ class CreateInmuebleTable extends Migration
         Schema::create('inmuebles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombreTitulo');
-            $table->integer('supTotal');
-            $table->integer('supCubierta');
-            $table->integer('dormitorios');
-            $table->integer('banos');
-            $table->integer('cocheras');
-            $table->integer('pisos');
-            $table->integer('antiguedad');
-            $table->integer('orientacion');
             $table->decimal('precio',12,2);
-            $table->string('idTipoOperacion',12);
-            $table->string('estado');
+            $table->string('idMlCategoria1',12);
+            $table->string('idMlCategoria2',12);
             $table->string('descripcion');
+            $table->string('direccion',32);
             $table->unsignedInteger('idLocalidad')->index();
             $table->unsignedInteger('idBarrio')->index();
-            $table->string('direccion',32);
             $table->unsignedInteger('idPropietario')->index();
             $table->unsignedInteger('idConstructora')->index();
             $table->unsignedInteger('idCliente')->index();
@@ -44,17 +36,6 @@ class CreateInmuebleTable extends Migration
             $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade');
 
         });
-
-        // Schema::create('inmuebles_atributos', function (Blueprint $table) {
-        //     $table->increments('id');
-        //     $table->unsignedInteger('idInmueble')->index();
-        //     $table->string('idAtributo', 64)->index();
-        //     $table->timestamps();
-
-        //     $table->foreign('idInmueble')->references('id')->on('inmuebles')->onDelete('cascade');
-        //     $table->foreign('idAtributo')->references('id')->on('mlCategorias3')->onDelete('cascade');
-
-        // });
 
     }
 

@@ -23,7 +23,7 @@ class Propietario extends Model
 
     public function imueble()
     {
-        return $this->hasMany('App\Inmueble');
+        return $this->hasMany('App\Inmueble','idPropietario');
     }
 
     public function cliente(){

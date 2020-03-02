@@ -18,7 +18,7 @@ class Constructora extends Model
 
     public function imuebles()
     {
-        return $this->hasMany('App\Inmueble');
+        return $this->hasMany('App\Inmueble', 'idConstructora');
     }
 
     public function cliente(){

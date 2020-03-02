@@ -4,20 +4,25 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Caracteristica extends Model
+class Atributos extends Model
 {
-    protected $table = "caracteristicas";
+    protected $table = "atributos";
 
 
-    protected $fillable = ['id','nombre','tipo'];
+    // protected $fillable = ['id','nombre','tipo'];
 
     public function inmuebles()
     {
         return $this->belongsToMany('App\Inmueble');
     }
 
-    public function tiposOperaciones()
+    public function mlCategorias3()
     {
-        return $this->belongsToMany('App\TipoOperacion');
+        return $this->belongsToMany('App\MlCategorias3');
+    }
+
+    public function mlCategorias4()
+    {
+        return $this->belongsToMany('App\MlCategorias4');
     }
 }

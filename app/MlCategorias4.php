@@ -8,7 +8,7 @@ class MlCategorias4 extends Model
 {
     protected $table = "mlcategorias4";
     public $incrementing = false;
-    protected $primaryKey = 'parentId';
+    protected $primaryKey = 'id';
     protected $fillable = ['id', 'parentId', 'name'];
 
     public function mlCategorias3()
@@ -18,6 +18,6 @@ class MlCategorias4 extends Model
 
     public function inmuebles()
     {
-        return $this->belongsToMany('App\Inmueble');
+        return $this->belongsToMany('App\Inmueble', 'inmuebles_mlcategorias4', 'idInmueble', 'idMlCategoria4');
     }
 }

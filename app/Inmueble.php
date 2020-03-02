@@ -10,7 +10,7 @@ class Inmueble extends Model
     use Sluggable;
   
     protected $table = "inmuebles";
-
+    protected $primaryKey = 'id';
     protected $fillable = ['supTotal', 'supCubierta', 'dormitorios', 'banos', 'cocheras', 'pisos', 'antiguedad', 'orientacion', 'precio', 'idTipoOperacion', 'estado', 'descripcion', 'idLocalidad', 'idBarrio', 'direccion', 'idPropietario', 'idConstructora'];
 
     public function operacion()
@@ -20,21 +20,21 @@ class Inmueble extends Model
 
     public function propietario()
     {
-        return $this->belongsTo('App\Propietario');
+        return $this->belongsTo('App\Propietario', 'idPropietario', 'id');
     }
 
     public function constructora()
     {
-        return $this->belongsTo('App\Constructora');
+        return $this->belongsTo('App\Constructora', 'idConstructora', 'id');
     }
 
-    public function tipoInmueble(){
-        return $this->belongsTo('App\MlCategorias1');
+    public function mlCategorias1(){
+        return $this->belongsTo('App\MlCategorias1', 'mlCategorias1', 'id');
     }
 
-    public function tipoOperacion()
+    public function mlCategorias2()
     {
-        return $this->belongsTo('App\MlCategorias2');
+        return $this->belongsTo('App\MlCategorias2', 'mlCategorias2', 'id');
     }
 
     public function barrio()
@@ -56,14 +56,14 @@ class Inmueble extends Model
         return $this->belongsTo('App\Cliente');
     }
 
-    public function atributos()
+    public function mlCategorias3()
     {
-        return $this->belongsToMany('App\MlCategorias3', 'id');
+        return $this->belongsToMany('App\MlCategorias3', 'inmuebles_mlcategorias3', 'id', 'idMlCategoria3');
     }
 
-    public function atributosListables()
+    public function mlCategorias4()
     {
-        return $this->belongsToMany('App\MlCategorias4', 'id');
+        return $this->belongsToMany('App\MlCategorias4', 'inmuebles_mlcategorias4', 'idInmueble', 'idMlCategoria4');
     }
 
     public function sluggable(){
